@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+<meta charset="UTF-8">
+<title>Email versturen</title>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+</head>
+
+<body>
+
+<h2>Email naar patiënt sturen</h2>
+
+<input type="text" id="naam" placeholder="Naam patiënt/collega/ouders"><br><br>
+
+<input type="email" id="email" placeholder="Email patiënt/collega/ouders"><br><br>
+
+<textarea id="bericht" placeholder="Bericht"></textarea><br><br>
+
+<button onclick="verstuurEmail()">Verstuur Email</button>
+
+<script>
+
+(function(){
+emailjs.init("JOUW_PUBLIC_KEY");
+})();
+
+function verstuurEmail(){
+
+var gegevens = {
+
+naam: document.getElementById("naam").value,
+
+email: document.getElementById("email").value,
+
+bericht: document.getElementById("bericht").value
+
+};
+
+emailjs.send("SERVICE_ID","TEMPLATE_ID", gegevens)
+
+.then(function(){
+
+alert("Email succesvol verzonden de patient/collega/ouders zullen uw bericht ontvangen");
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
